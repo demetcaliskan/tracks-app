@@ -12,7 +12,7 @@ import TrackDetailScreen from './src/screens/TrackDetailScreen'
 const Stack = createStackNavigator()
 const Tab = createMaterialBottomTabNavigator()
 
-const trackListNavigation = () => {
+const TrackListNavigation = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name='TrackList' component={TrackListScreen} />
@@ -21,12 +21,12 @@ const trackListNavigation = () => {
   )
 }
 
-const bottomTabNavigation = () => {
+const BottomTabNavigation = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen name='Account' component={AccountScreen} />
       <Tab.Screen name='TrackCreate' component={TrackCreateScreen} />
-      <Tab.Screen name='Track' component={trackListNavigation} />
+      <Tab.Screen name='Track' component={TrackListNavigation} />
     </Tab.Navigator>
   )
 }
@@ -34,10 +34,14 @@ const bottomTabNavigation = () => {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name='Signin' component={SigninScreen} />
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
         <Stack.Screen name='Signup' component={SignupScreen} />
-        <Stack.Screen name='Home' component={bottomTabNavigation} />
+        <Stack.Screen name='Signin' component={SigninScreen} />
+        <Stack.Screen name='Home' component={BottomTabNavigation} />
       </Stack.Navigator>
     </NavigationContainer>
   )
